@@ -1,0 +1,51 @@
+import tkinter as tk
+
+ventana = tk.Tk()
+ventana.geometry("400x300")
+
+# Etiquetas
+lbl_inicio = tk.Label(ventana, text="Lugar de inicio:")
+lbl_fin = tk.Label(ventana, text="Lugar de salida:")
+lbl_distancia = tk.Label(ventana, text="Distancia:")
+lbl_precio = tk.Label(ventana, text="Precio:")
+
+# Campos de entrada
+ent_inicio = tk.Entry(ventana)
+ent_fin = tk.Entry(ventana)
+ent_distancia = tk.Entry(ventana)
+ent_precio = tk.Entry(ventana)
+
+# Botones
+btn_calcular = tk.Button(ventana, text="Calcular")
+btn_salir = tk.Button(ventana, text="Salir", command=ventana.quit)
+
+# Etiquetas
+lbl_inicio.grid(row=0, column=0, padx=10, pady=10)
+lbl_fin.grid(row=1, column=0, padx=10, pady=10)
+lbl_distancia.grid(row=2, column=0, padx=10, pady=10)
+lbl_precio.grid(row=3, column=0, padx=10, pady=10)
+
+# Campos de entrada
+ent_inicio.grid(row=0, column=1, padx=10, pady=10)
+ent_fin.grid(row=1, column=1, padx=10, pady=10)
+ent_distancia.grid(row=2, column=1, padx=10, pady=10)
+ent_precio.grid(row=3, column=1, padx=10, pady=10)
+
+# Botones
+btn_calcular.grid(row=4, column=0, padx=10, pady=10)
+btn_salir.grid(row=4, column=1, padx=10, pady=10)
+
+def calcular():
+    inicio = ent_inicio.get()
+    fin = ent_fin.get()
+    distancia = float(ent_distancia.get())
+    precio = float(ent_precio.get())
+    costo = distancia * precio
+    ent_precio.delete(0, tk.END)
+    ent_precio.insert(0, costo)
+
+btn_calcular.config(command=calcular)
+
+ventana.mainloop()
+
+
